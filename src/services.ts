@@ -10,8 +10,8 @@ const paginateApi = async (page = 1) => {
   return res.data;
 };
 
-const dummyApi = async () => {
-  const res = await axios.get('https://dummyjson.com/products?limit=10&skip=1');
+const dummyApi = async ({ limit = 10, skip = 1 }) => {
+  const res = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
   return res.data;
 };
 
