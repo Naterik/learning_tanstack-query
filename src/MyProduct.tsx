@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import { fetchInfiniteDataProducts, PRODUCTS_QUERY_KEY } from './queries/products';
-import { addDummyProductApi, updateDummyProductApi } from './services';
+import { addDummyProductApi, deleteDummyProductApi, updateDummyProductApi } from './services';
 
 const MyProduct = () => {
   const {
@@ -55,7 +55,7 @@ const MyProduct = () => {
   });
   const { mutate: deleteMutation } = useMutation({
     mutationFn: (productId: number) => {
-      return updateDummyProductApi(productId, { title: '' });
+      return deleteDummyProductApi(productId);
     },
     onSuccess() {
       alert('Product deleted successfully');
