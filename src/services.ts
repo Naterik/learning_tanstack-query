@@ -10,9 +10,30 @@ const paginateApi = async (page = 1) => {
   return res.data;
 };
 
-const dummyApi = async ({ limit = 10, skip = 1 }) => {
+const dummyProductApi = async ({ limit = 10, skip = 0 }) => {
   const res = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
   return res.data;
 };
 
-export { dummyApi, paginateApi };
+const addDummyProductApi = async (productData: any) => {
+  const res = await axios.post(`https://dummyjson.com/products/add`, productData);
+  return res.data;
+};
+
+const updateDummyProductApi = async (productId: number, productData: any) => {
+  const res = await axios.put(`https://dummyjson.com/products/${productId}`, productData);
+  return res.data;
+};
+
+const deleteDummyProductApi = async (productId: number) => {
+  const res = await axios.delete(`https://dummyjson.com/products/${productId}`);
+  return res.data;
+};
+
+export {
+  addDummyProductApi,
+  deleteDummyProductApi,
+  dummyProductApi,
+  paginateApi,
+  updateDummyProductApi,
+};
